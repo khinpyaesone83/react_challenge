@@ -15,6 +15,7 @@ const CartModal = ({
   cards,
   handleDecrease,
   handleIncrease,
+  handleRemove,
   success,
 }) => {
   const filtered = _.uniq(cards, "id");
@@ -49,6 +50,7 @@ const CartModal = ({
                       item={card}
                       handleDecrease={handleDecrease}
                       handleIncrease={handleIncrease}
+                      handleRemove={handleRemove}
                     />
                   </Element>
                 ))}

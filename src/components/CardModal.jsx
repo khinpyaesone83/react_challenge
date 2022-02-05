@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { AiOutlineClose } from "react-icons/ai";
 
-const CardModal = ({ item, handleDecrease, handleIncrease }) => {
+const CardModal = ({ item, handleDecrease, handleIncrease, handleRemove }) => {
   return (
     <>
       <Container>
@@ -26,7 +27,12 @@ const CardModal = ({ item, handleDecrease, handleIncrease }) => {
                   {item.set.total !== 0 && (
                     <UpIcon onClick={() => handleIncrease(item)} />
                   )}
-                  <DownIcon onClick={() => handleDecrease(item)} />
+                  {item.count > 1 && (
+                    <DownIcon onClick={() => handleDecrease(item)} />
+                  )}
+                  {item.count === 1 && (
+                    <RemoveIcon onClick={() => handleRemove(item)} />
+                  )}
                 </Icon>
               </Sup>
             </H2>
@@ -163,6 +169,12 @@ const UpDisableIcon = styled(IoIosArrowUp)`
   color: #c5c5c5;
 `;
 const DownIcon = styled(IoIosArrowDown)`
+  font-size: 15px;
+  cursor: pointer;
+`;
+
+const RemoveIcon = styled(AiOutlineClose)`
+  color: red;
   font-size: 15px;
   cursor: pointer;
 `;

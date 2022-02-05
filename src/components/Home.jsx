@@ -93,6 +93,11 @@ const Home = () => {
     }
   };
 
+  const handleRemove = (item) => {
+    const filter = selectCards.filter((c) => c.id !== item.id);
+    setSelectCards(filter);
+  };
+
   const handleIncrease = (item) => {
     item.count++;
     item.set.total--;
@@ -183,6 +188,7 @@ const Home = () => {
             handleIncrease={handleIncrease}
             handleClear={handleClear}
             handlePay={handlePay}
+            handleRemove={handleRemove}
           />
         </Element>
       )}
